@@ -86,18 +86,18 @@ const handleScroll = () => {
         </form>
 
         {error && <div className="error-message">{error}</div>}
-        {loading ? (
-          <div className="loading">Loading...</div>
-        ) : (
+        
+
           <div className="movies-grid">
-            {movies.map(
+
+            {Array.from(new Map(movies.map(movie => [movie.id, movie])).values()).map(
               (movie) =>
                 <div className="movie-card" key={movie.id}>
                   <MovieCard movie={movie} />
                 </div>
             )}
           </div>
-        )}
+      {loading && <div className="loading">Loading...</div>}
       </div>
     );
   };
